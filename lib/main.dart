@@ -12,44 +12,29 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: Text("Flutter Fundamental"),
           ),
-          body: Column(
-            //y-axis
-            mainAxisAlignment: MainAxisAlignment.center,
-            //x-axis
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("data"),
-              Text("data"),
-              Text("data"),
-              Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Text("row-data"),
-                  Text("row-data"),
-                  Text("row-data"),
-                ],
-              )
-            ],
-          )
-          // Center(
-          //   child: Container(
-          //       color: Colors.lightBlue,
-          //       width: 150,
-          //       height: 50,
-          //       child: Text(
-          //         "Hello World, Are you ready for upcoming challenges",
-          //         maxLines: 3,
-          //         overflow: TextOverflow.visible,
-          //         softWrap: true,
-          //         textAlign: TextAlign.right,
-          //         style: TextStyle(
-          //             color: Colors.white,
-          //             fontStyle: FontStyle.italic,
-          //             fontWeight: FontWeight.w700,
-          //             fontSize: 16),
-          //       )),
-          // ),
-          ),
+          body: Container(
+            color: Colors.amber,
+            margin: EdgeInsets.all(10),
+            child: Container(
+                color: Colors.blue,
+                margin: EdgeInsets.all(15),
+                child: Container(
+                  color: Colors.red,
+                  margin: EdgeInsets.fromLTRB(10, 10, 15, 20),
+                  child: Container(
+                     margin:EdgeInsets.fromLTRB(10, 10, 15, 20),
+                    decoration: BoxDecoration(
+                    
+                        borderRadius: BorderRadius.circular(30),
+                         color: Colors.deepPurple.shade100,
+                        gradient: LinearGradient(
+                             begin: Alignment.bottomLeft,
+                            end: Alignment.topLeft,
+                            colors: <Color>[Colors.teal, Colors.red])
+                        ),
+                  ),
+                )),
+          )),
     );
   }
 }
