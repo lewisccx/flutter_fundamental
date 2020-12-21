@@ -13,7 +13,22 @@ class MyApp extends StatelessWidget {
           title: Text("Flutter Fundamental"),
         ),
         body: Center(
-          child: Text("Hello World"),
+          child: Container(
+              color: Colors.lightBlue,
+              width: 150,
+              height: 50,
+              child: Text(
+                "Hello World, Are you ready for upcoming challenges",
+                maxLines: 3,
+                overflow: TextOverflow.visible,
+                softWrap: true,
+                textAlign: TextAlign.right,
+                style:
+                    TextStyle(color: Colors.white, 
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16),
+              )),
         ),
       ),
     );
