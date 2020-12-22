@@ -11,10 +11,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int number = 0;
-
+  String message = "initial text";
   void onButtonClicked() {
     setState(() {
-      number += 1;
+      message = "text changeeeed";
     });
   }
 
@@ -27,17 +27,18 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  number.toString(),
-                  style: TextStyle(fontSize: 10 + number.toDouble()),
-                ),
-                RaisedButton(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(message),
+              RaisedButton(
                   child: Text("Click Me"),
-                  onPressed: onButtonClicked,
-                ),
-              ]),
+                  onPressed: () {
+                    setState(() {
+                      message = "text changd";
+                    });
+                  })
+            ],
+          ),
         ),
       ),
     );
