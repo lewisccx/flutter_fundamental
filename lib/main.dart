@@ -47,8 +47,28 @@ class _MyAppState extends State<MyApp> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                RaisedButton(child: Text("Increase Text Array"), onPressed: onButton1Clicked),
-                RaisedButton(child: Text("Remove Text Array"), onPressed: onButton2Clicked),
+                RaisedButton(
+                    child: Text(
+                      "Increase Text Array",
+                      style: TextStyle(
+                          fontFamily: "Langar",
+                          fontSize: 16,
+                          decoration: TextDecoration.underline),
+                    ),
+                    onPressed: onButton1Clicked),
+                RaisedButton(
+                    child: Text(
+                      "Remove Text Array",
+                      style: TextStyle(
+                        fontFamily: "Langar",
+                        fontSize: 16,
+                        decoration: TextDecoration.underline,
+                        decorationThickness: 5,
+                        decorationColor: Colors.amber,
+                        decorationStyle: TextDecorationStyle.wavy
+                      ),
+                    ),
+                    onPressed: onButton2Clicked),
               ],
             ),
             Column(
