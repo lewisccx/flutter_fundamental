@@ -10,37 +10,50 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int number = 0;
-  String message = "initial text";
-  void onButtonClicked() {
+  List<Widget> widgets = [];
+  int counter = 1;
+  void onButton1Clicked() {
     setState(() {
-      message = "text changeeeed";
+      widgets.add(Text("Data " + counter.toString()));
+      counter += 1;
     });
   }
+
+  void onButton2Clicked() {
+    setState(() {
+      if (widgets.isNotEmpty) {
+        widgets.removeLast();
+        counter -= 1;
+      }
+    });
+  }
+  // _MyAppState() {
+  //   for (int i = 0; i < 25; i++) {
+  //     widgets.add(Text(
+  //       "Data " + i.toString(),
+  //       style: TextStyle(fontSize: 35),
+  //     ));
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("data"),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(message),
-              RaisedButton(
-                  child: Text("Click Me"),
-                  onPressed: () {
-                    setState(() {
-                      message = "text changd";
-                    });
-                  })
-            ],
+          appBar: AppBar(
+            title: Text("ListView"),
           ),
-        ),
-      ),
+          body: ListView(children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                RaisedButton(child: Text("Increase Text Array"), onPressed: onButton1Clicked),
+                RaisedButton(child: Text("Remove Text Array"), onPressed: onButton2Clicked),
+              ],
+            ),
+            Column(
+                crossAxisAlignment: CrossAxisAlignment.start, children: widgets)
+          ])),
     );
   }
 }
