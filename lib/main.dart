@@ -55,13 +55,44 @@ class _MyAppState extends State<MyApp> {
                   elevation: 3,
                 ),
               ),
-            )
+            ),
+            Draggable<Color>(
+              data: color2,
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: Material(
+                  color: color2,
+                  shape: StadiumBorder(),
+                  elevation: 3,
+                ),
+              ),
+              childWhenDragging: SizedBox(
+                width: 50,
+                height: 50,
+                child: Material(
+                  color: Colors.grey,
+                  shape: StadiumBorder(),
+                  elevation: 0,
+                ),
+              ),
+              feedback: SizedBox(
+                width: 50,
+                height: 50,
+                child: Material(
+                  color: color2.withOpacity(0.8),
+                  shape: StadiumBorder(),
+                  elevation: 3,
+                ),
+              ),
+            ),
           ]),
           DragTarget<Color>(
               onWillAccept: (value) => true,
               onAccept: (value) {
                 isAccepted = true;
                 targetColor = value;
+                debugPrint(value.toString());
               },
               builder: (context, candidates, rejected) {
                 return (isAccepted)
