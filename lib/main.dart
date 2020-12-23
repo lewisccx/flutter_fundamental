@@ -22,34 +22,33 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(
-        title: Text("Images"),
-      ),
-      body: Column(children: [
-        Container(
-          color: Colors.blueAccent,
-          width: 500,
-          height: 300,
-          padding: EdgeInsets.all(5),
-          child: Image(
-            image: NetworkImage(
-                "https://www.udiscovermusic.com/wp-content/uploads/2019/04/Blackpink-2019-Kill-This-Love-Press-Shot-web-optimised-1000.jpg"),
-            fit: BoxFit.contain,
-            repeat: ImageRepeat.repeat,
-          ),
-        ),
-        Container(
-          color: Colors.blueAccent,
-          width: 200,
-          height: 200,
-          padding: EdgeInsets.all(5),
-          child: Image(
-            image: AssetImage("images/blackpink.jpg"),
-            fit: BoxFit.contain,
-            repeat: ImageRepeat.noRepeat,
-          ),
-        )
-      ]),
-    ));
+            appBar: AppBar(
+              title: Text("Images"),
+            ),
+            body: Center(
+                child: Row(
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Spacer(flex:1),
+                Container(
+                  width: 80,
+                  height: 80,
+                  color: Colors.red,
+                ),
+                Spacer(flex:2),
+                Container(
+                  width: 80,
+                  height: 80,
+                  color: Colors.yellow,
+                ),
+                Spacer(flex:3 ),
+                Container(
+                  width: 80,
+                  height: 80,
+                  color: Colors.green,
+                ),
+                Spacer(flex:4)
+              ],
+            ))));
   }
 }
