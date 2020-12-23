@@ -23,199 +23,33 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
-        title: Text("Flexible Layout"),
+        title: Text("Images"),
       ),
-      body: Stack(
-        children: [
-          //background
-          Column(children: [
-            Flexible(
-              flex: 1,
-              child: Row(
-                children: [
-                  Flexible(flex: 1, child: Container(color: Colors.amber)),
-                  Flexible(flex: 1, child: Container(color: Colors.green))
-                ],
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: Row(
-                children: [
-                  Flexible(flex: 1, child: Container(color: Colors.orange)),
-                  Flexible(flex: 1, child: Container(color: Colors.red))
-                ],
-              ),
-            ),
-          ]),
-          ListView(
-            children: [
-              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "Text 1",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-              ])
-            ],
+      body: Column(children: [
+        Container(
+          color: Colors.blueAccent,
+          width: 500,
+          height: 300,
+          padding: EdgeInsets.all(5),
+          child: Image(
+            image: NetworkImage(
+                "https://www.udiscovermusic.com/wp-content/uploads/2019/04/Blackpink-2019-Kill-This-Love-Press-Shot-web-optimised-1000.jpg"),
+            fit: BoxFit.contain,
+            repeat: ImageRepeat.repeat,
           ),
-          Align(
-            //-1 to 0
-            alignment: Alignment(-0.9,0.2),
-            child: RaisedButton(
-                child: Text("click me",style: TextStyle(color: Colors.white),), color: Colors.black, onPressed: () {})),
-          
-        ],
-      ),
+        ),
+        Container(
+          color: Colors.blueAccent,
+          width: 200,
+          height: 200,
+          padding: EdgeInsets.all(5),
+          child: Image(
+            image: AssetImage("images/blackpink.jpg"),
+            fit: BoxFit.contain,
+            repeat: ImageRepeat.noRepeat,
+          ),
+        )
+      ]),
     ));
   }
 }
