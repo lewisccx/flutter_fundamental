@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,43 +10,82 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Random random = Random();
-
-  void onAnimatedContainerTap() {
-    setState(() {});
-  }
+  Color color1 = Colors.red;
+  Color color2 = Colors.green;
+  Color targetColor = Colors.brown;
+  bool isAccepted = false;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-            appBar: AppBar(
-              title: Text("Images"),
-            ),
-            body: Center(
-                child: Row(
-              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Spacer(flex:1),
-                Container(
-                  width: 80,
-                  height: 80,
-                  color: Colors.red,
+      appBar: AppBar(
+        title: Text("Draggable"),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            Draggable<Color>(
+              data: color1,
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: Material(
+                  color: color1,
+                  shape: StadiumBorder(),
+                  elevation: 3,
                 ),
-                Spacer(flex:2),
-                Container(
-                  width: 80,
-                  height: 80,
-                  color: Colors.yellow,
+              ),
+              childWhenDragging: SizedBox(
+                width: 50,
+                height: 50,
+                child: Material(
+                  color: Colors.grey,
+                  shape: StadiumBorder(),
+                  elevation: 0,
                 ),
-                Spacer(flex:3 ),
-                Container(
-                  width: 80,
-                  height: 80,
-                  color: Colors.green,
+              ),
+              feedback: SizedBox(
+                width: 50,
+                height: 50,
+                child: Material(
+                  color: color1.withOpacity(0.8),
+                  shape: StadiumBorder(),
+                  elevation: 3,
                 ),
-                Spacer(flex:4)
-              ],
-            ))));
+              ),
+            )
+          ]),
+          DragTarget<Color>(
+              onWillAccept: (value) => true,
+              onAccept: (value) {
+                isAccepted = true;
+                targetColor = value;
+              },
+              builder: (context, candidates, rejected) {
+                return (isAccepted)
+                    ? SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: Material(
+                          color: targetColor,
+                          shape: StadiumBorder(),
+                          elevation: 3,
+                        ),
+                      )
+                    : SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: Material(
+                          color: Colors.black26,
+                          shape: StadiumBorder(),
+                          elevation: 3,
+                        ),
+                      );
+              })
+        ],
+      ),
+    ));
   }
 }
