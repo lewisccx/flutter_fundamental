@@ -15,129 +15,206 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MainPage());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: MainPage());
   }
 }
 
 class MainPage extends StatelessWidget {
+  double getSmallDiameter(BuildContext context) =>
+      MediaQuery.of(context).size.width * 2 / 3;
+
+  double getBigDiameter(BuildContext context) =>
+      MediaQuery.of(context).size.width * 7 / 8;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightGreen,
-        title: Text(
-          "Opaque card UI ",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
+      backgroundColor: Colors.grey[100],
       body: Stack(
         children: [
-          Container(
+          Positioned(
+            right: -getSmallDiameter(context) / 3,
+            top: -getSmallDiameter(context) / 3,
+            child: Container(
+              width: getSmallDiameter(context),
+              height: getSmallDiameter(context),
               decoration: BoxDecoration(
+                  shape: BoxShape.circle,
                   gradient: LinearGradient(
-                      colors: [Color(0xFFA1FFCE), Color(0xFFFAFFD1)],
+                      colors: [Color(0xFF9796F0), Color(0xFFFBC7D4)],
                       begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter))),
-          Center(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.7,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                elevation: 8,
-                child: Stack(
-                  children: [
-                    Opacity(
-                      opacity: 0.3,
-                      child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  "images/google-dots.jpg",
-                                ),
-                                fit: BoxFit.fill,
-                                repeat: ImageRepeat.noRepeat,
-                              ))),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.35,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(10),
-                              topLeft: Radius.circular(10)),
-                          image: DecorationImage(
-                              image: AssetImage("images/tree.jpg"),
-                              fit: BoxFit.cover)),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(
-                          20,
-                          50 + MediaQuery.of(context).size.height * 0.35,
-                          20,
-                          20),
-                      child: Center(
-                        child: Column(children: [
-                          Text("Beatiful Sunset at Paddy Field",
-                              maxLines: 2,
-                              textAlign: TextAlign.center,
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 25)),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0, 20, 0, 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("Posted on ",
-                                    style: TextStyle(
-                                        color: Colors.grey, fontSize: 12)),
-                                Text("June 18 2020",
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 12))
-                              ],
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Spacer(
-                                flex: 10,
-                              ),
-                              Icon(
-                                Icons.thumb_up,
-                                size: 18,
-                                color: Colors.grey,
-                              ),
-                              Spacer(flex: 1),
-                              Text(
-                                "99",
-                                style: TextStyle(color: Colors.grey),
-                              ),
-                              Spacer(flex: 5),
-                              Icon(
-                                Icons.comment,
-                                size: 18,
-                                color: Colors.grey,
-                              ),
-                              Spacer(flex: 1),
-                              Text(
-                                "888",
-                                style: TextStyle(color: Colors.grey),
-                              ),
-                              Spacer(
-                                flex: 10,
-                              ),
-                            ],
-                          )
-                        ]),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+                      end: Alignment.bottomCenter)),
             ),
-          )
+          ),
+          Positioned(
+            left: -getBigDiameter(context) / 4,
+            top: -getBigDiameter(context) / 4,
+            child: Container(
+              child: Center(
+                  child: Text(
+                "dribble",
+                style: TextStyle(
+                    color: Colors.white, fontFamily: "Pacifico", fontSize: 30),
+              )),
+              width: getBigDiameter(context),
+              height: getBigDiameter(context),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                      colors: [Color(0xFF9796F0), Color(0xFFFBC7D4)],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter)),
+            ),
+          ),
+          Positioned(
+            right: -getBigDiameter(context) / 2,
+            bottom: -getBigDiameter(context) / 2,
+            child: Container(
+              width: getBigDiameter(context),
+              height: getBigDiameter(context),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle, color: Colors.grey[100]),
+            ),
+          ),
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: ListView(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(10)),
+                    margin: EdgeInsets.fromLTRB(20, 300, 20, 10),
+                    padding: EdgeInsets.fromLTRB(10, 0, 10, 25),
+                    child: Column(
+                      children: [
+                        TextField(
+                            decoration: InputDecoration(
+                                hintText: "Email",
+                                hintStyle: TextStyle(color: Colors.grey[500]),
+                                icon: Icon(
+                                  Icons.email,
+                                  color: Colors.pink[200],
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.pink[300])))),
+                        TextField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                                hintText: "Password",
+                                hintStyle: TextStyle(color: Colors.grey[500]),
+                                icon: Icon(
+                                  Icons.vpn_key,
+                                  color: Colors.pink[200],
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.pink[300]))))
+                      ],
+                    ),
+                  ),
+                  Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                          margin: EdgeInsets.fromLTRB(0, 10, 20, 0),
+                          child: Text("FORGOT PASSWORD",
+                              style: TextStyle(
+                                  color: Colors.pink[200],
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold)))),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(20, 30, 20, 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SizedBox(
+                        
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          height: 40,
+                          child: Container(
+                            
+                            child: Material(
+                              elevation: 1,
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.transparent,
+                              child: InkWell(
+                                
+                                borderRadius: BorderRadius.circular(10),
+                                splashColor: Colors.pink[500],
+                                onTap: () {},
+                                child: Center(
+                                  child: Text(
+                                    "SIGN IN",
+                                    style: TextStyle(
+                                    
+                                        fontSize: 15,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                            
+                                borderRadius: BorderRadius.circular(10),
+                            
+                                gradient: LinearGradient(
+                                    colors: [
+                                      Color(0xFF9796F0),
+                                      Color(0xFFFBC7D4)
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter)),
+                          ),
+                        ),
+                        FloatingActionButton(
+                            backgroundColor: Colors.white,
+                            mini: true,
+                            elevation: 3,
+                            child: Image(
+                              image: AssetImage(
+                                "images/facebook.png",
+                              ),
+                            ),
+                            onPressed: () {}),
+                        FloatingActionButton(
+                            backgroundColor: Colors.white,
+                            mini: true,
+                            elevation: 3,
+                            child: Image(
+                              image: AssetImage(
+                                "images/twitter.png",
+                              ),
+                            ),
+                            onPressed: () {})
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "DON'T HAVE AN ACCOUNT? ",
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "SIGN UP",
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.pink[200],
+                              fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ))
         ],
       ),
     );
