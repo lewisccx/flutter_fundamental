@@ -15,7 +15,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MainPage());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: MainPage());
   }
 }
 
@@ -23,63 +23,29 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text(
-          "Hero",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-      backgroundColor: Colors.lightBlue,
-      body: GestureDetector(
-        child: Hero(
-          tag: 'pp',
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: Container(
-              width: 100,
-              height: 100,
-              child: Image(
-                  fit: BoxFit.cover, image: AssetImage("images/lisa.jpg")),
+        appBar: PreferredSize(
+      preferredSize: Size.fromHeight(200),
+      child: AppBar(
+        backgroundColor: Colors.amber,
+        flexibleSpace: Stack(
+          children: [
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: Container(
+                margin: EdgeInsets.all(20),
+                child: Text(
+                  "Appbar with custom height",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
             ),
-          ),
-        ),
-        onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return ProfilePage();
-          }));
-        },
-      ),
-    );
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text(
-          "Hero",
-          style: TextStyle(color: Colors.white),
+          ],
         ),
       ),
-      backgroundColor: Colors.lightBlue,
-      body: Center(
-        child: Hero(
-          tag: 'pp',
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Container(
-              width: 200,
-              height: 200,
-              child: Image(
-                  fit: BoxFit.cover, image: AssetImage("images/lisa.jpg")),
-            ),
-          ),
-        ),
-      ),
-    );
+    ));
   }
 }
