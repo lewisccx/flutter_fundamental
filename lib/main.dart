@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,46 +16,32 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: DefaultTabController(length: 2, child: MainPage()));
+    return MaterialApp(debugShowCheckedModeBanner: false, home: MainPage());
   }
 }
 
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    TabBar myTabBar = TabBar(
-      indicator: BoxDecoration(
-          color: Colors.purple[500],
-          border:
-              Border(top: BorderSide(color: Colors.purple[200], width: 50))),
-      //indicatorColor: Colors.purple[500],
-      tabs: [
-        Tab(
-          icon: Icon(Icons.comment),
-          text: "Comments",
-        ),
-        Tab(icon: Icon(Icons.computer), text: "News")
-      ],
-    );
-
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: Text(
-            "tabbar",
-            style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          bottom: PreferredSize(
-            preferredSize: Size.fromHeight(myTabBar.preferredSize.height),
-            child: Container(color: Colors.amber, child: myTabBar),
-          )),
-      body: TabBarView(children: [
-        Center(child: Text("tab 1")),
-        Center(child: Text("tab 2")),
-      ]),
+        backgroundColor: Colors.blue,
+        title: Text(
+          "QR code",
+          style: TextStyle(
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: Center(
+          child: QrImage(
+        data: "https://www.youtube.com/watch?v=7CFAEXymRvM&list=PLZQbl9Jhl-VACm40h5t6QMDB92WlopQmV&index=30",
+        backgroundColor: Colors.green,
+        foregroundColor: Colors.red,
+        errorCorrectionLevel: QrErrorCorrectLevel.M,
+        padding: EdgeInsets.all(0),
+        version: QrVersions.auto,
+        size: 200.0,
+      )),
     );
   }
 }
